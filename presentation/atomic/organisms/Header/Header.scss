@@ -1,0 +1,12 @@
+.header{
+    background: var(--main);
+    color: var(--fg);
+
+    &--items{
+        max-width: var(--page-width);
+        margin: auto;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
