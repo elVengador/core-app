@@ -4,8 +4,9 @@ import { onError, } from "@apollo/client/link/error";
 import { storage } from '../storage/index';
 import { RefreshTokenInput, TokensOutput } from "../../../app/domain/entities";
 import { MUTATION_REFRESH_TOKEN } from "../repository/auth/auth.gql";
+import { API_HOST, API_PORT } from "../../core.enviroments";
 
-const uri = 'http://localhost:4100/graphql'
+const uri = `http://${API_HOST}:${API_PORT}/graphql`
 const token = () => storage.readSessionStorage({ key: 'access-token' }) || ''
 
 const httpLink = new HttpLink({ uri });
