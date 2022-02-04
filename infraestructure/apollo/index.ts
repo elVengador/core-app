@@ -7,6 +7,7 @@ import { MUTATION_REFRESH_TOKEN } from "../repository/auth/auth.gql";
 import { API_HOST, API_PORT } from "../../core.enviroments";
 
 const uri = `http://${API_HOST}:${API_PORT}/graphql`
+console.log('\n\n   -->> URI:', uri);
 const token = () => storage.readSessionStorage({ key: 'access-token' }) || ''
 
 const httpLink = new HttpLink({ uri });
