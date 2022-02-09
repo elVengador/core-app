@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import './Header.scss';
 import { Title } from '../../atoms/Title/Title';
+import { HEADER_TEXT } from '../../../../../app/presentation/configPage.util';
 
 interface HeaderProps {
-    title: string;
+    title?: string;
 }
 
 export const Header = ({
-    title = ''
+    title = HEADER_TEXT
 }: HeaderProps): JSX.Element => {
 
     const [theme, setTheme] = useState("light-theme");
