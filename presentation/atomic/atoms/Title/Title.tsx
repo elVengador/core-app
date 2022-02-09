@@ -11,7 +11,7 @@ interface TitleProps {
     content: string;
     icon?: IconProp | null;
     iconSeparation?: IconSeparation;
-    color?: 'primary' | 'secondary',
+    color?: 'primary' | 'secondary' | 'in',
     attributes?: {
         style?: Style;
         className?: string

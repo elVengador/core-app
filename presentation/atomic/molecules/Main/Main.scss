@@ -3,6 +3,7 @@
     border-radius: 10px;
     box-shadow: var(--shadow);
     width: inherit;
-    max-height: var(--height-main);
+    height: 100%;
+    // max-height: var(--height-main);
     overflow-y: auto;
 }

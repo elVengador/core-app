@@ -26,7 +26,8 @@ export const Form = ({
                 <Button
                     content='ok'
                     icon="check"
-                    onClick={() => props.onSubmit()} />
+                    events={{ onClick: () => props.onSubmit() }}
+                />
             </div>
         </div>
     );
