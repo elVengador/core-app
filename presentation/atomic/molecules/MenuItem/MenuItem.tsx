@@ -22,9 +22,13 @@ export const MenuItem = ({ ...props }: MenuItemProps): JSX.Element => {
         <div className='menu-item'>
             <NavLink
                 to={props.path}
-                style={({ isActive }) => ({ color: isActive ? "royalBlue" : "gray" })}
+                style={({ isActive }) => ({ color: isActive ? "var(--main)" : "gray" })}
             >
-                <Title content={buildNameToMenuItem(props.name)} icon={props.icon} color='in' />
+                <Title
+                    content={buildNameToMenuItem(props.name)}
+                    icon={props.icon}
+                    color='in'
+                />
             </NavLink>
         </div>
     )
