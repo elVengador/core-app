@@ -1,0 +1,150 @@
+.select{
+    width: 100%;
+    box-shadow: var(--shadow);
+    border-radius: 10px;
+    // border: solid;
+    background: var(--bg);
+    position: relative;
+    &--label{
+        color: var(--main);
+        font-weight: 700;
+        &-sm{
+            padding: 0px 5px;
+            font-size: var(--font-size-xs);
+        }
+        &-md{
+            padding: 5px 15px;
+            font-size: var(--font-size-md);
+        }
+        &-lg{
+            padding: 5px 20px;
+            font-size: var(--font-size-lg);
+        }
+    }
+    .select-element{
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg_2);
+        outline: solid 2px var(--main);
+
+        &-default{
+            border: none;
+            outline: none;
+        }
+
+        &-success{
+            outline: solid 2px var(--success);
+        }
+
+        &-error{
+            outline: solid 2px var(--bad);
+        }
+        .item-selected{
+            width: 100%;
+            &--input{
+                border: none;
+                width: calc(100% - 30px);
+                padding: 4px 15px;
+                font-size: var(--font-size-md);
+                margin-right: 30px;
+                color: var(--fg);
+                background: var(--bg_2);
+            }
+            &--input::placeholder{
+                color: var(--main);
+            }
+        }
+    }
+
+    .options{
+        background: var(--bg_2);
+        max-height: 100px;
+        overflow-y: auto;
+        position: absolute;
+        top: 26px;
+        left: 0px;
+        right: 0px;
+        border-bottom: solid 2px var(--main);
+        border-left: solid 2px var(--main);
+        border-right: solid 2px var(--main);
+        &--item{
+            color: var(--fg);
+            border-top: dashed 2px var(--fg);
+            padding: 5px 10px;
+        }
+        &--item:hover{
+            color: var(--bg_2);
+            background: var(--main);
+            cursor: pointer;
+        }
+    }
+    .options:last-child{
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}
+
+// &--element{
+//     display: flex;
+//     // background: var(--bg_2);
+//     // color: var(--fg);
+//     // border: none;
+//     // border-radius: 10px;
+//     // width: 100%;
+//     // // box-shadow: var(--shadow-inner);
+//     // box-shadow: var(--shadow);
+
+//     &-default{
+//         border: none;
+//         outline: none;
+//     }
+
+//     &-success{
+//         outline: solid 2px var(--success);
+//     }
+
+//     &-error{
+//         outline: solid 2px var(--bad);
+//     }
+
+//     &-disable{
+//         background: var(--disable);
+//         color: var(--fg);
+//         border: none;
+//         border-radius: 10px;
+//     }
+
+//     &-sm{
+//         padding: 2px 5px;
+//     }
+
+//     &-md{
+//         padding: 10px 15px;
+//     }
+
+//     &-lg{
+//         padding: 15px 20px;
+//     }
+// }
+
+// &--element:focus{
+//     background: var(--bg_2);
+//     color: var(--fg);
+//     border: none;
+//     // border-radius: 10px;
+//     width: 100%;
+// }
+
+// &--item{
+//     // border-radius: 10px;
+//     // border: solid;
+//     color:var(--fg)
+// }
+// &--item:hover{
+//     cursor: pointer;
+//     background: var(--main);
+//     color: var(--bg);
+//     // border-radius: 10px;
+//     // border: solid;
+// }

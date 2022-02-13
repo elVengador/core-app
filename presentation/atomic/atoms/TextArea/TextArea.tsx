@@ -1,11 +1,11 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Style } from '../../../utils/interfaces.utils';
 
-import './Input.scss';
+import './TextArea.scss';
 
 export type InputStatus = 'default' | 'success' | 'error' | 'disable'
 
-interface InputProps {
+interface TextAreaProps {
     value: string
     setValue: React.Dispatch<React.SetStateAction<string>>
     state: InputStatus
@@ -14,13 +14,6 @@ interface InputProps {
     size?: 'sm' | 'md' | 'lg';
     required?: boolean
     pattern?: string,
-    type?: 'text' | 'date' | 'password';
-    borderRadius?: {
-        topLeft: 'none' | 'sm' | 'md' | 'lg',
-        topRight: 'none' | 'sm' | 'md' | 'lg',
-        bottomRight: 'none' | 'sm' | 'md' | 'lg',
-        bottomLeft: 'none' | 'sm' | 'md' | 'lg'
-    }
     attributes?: {
         id?: string;
         name?: string;
@@ -34,68 +27,48 @@ interface InputProps {
     }
 }
 
-export const Input = ({
+export const TextArea = ({
     value = '',
     state = 'default',
     labelValue = '',
     size = 'md',
     required = true,
     pattern = '',
-    type = 'text',
-    borderRadius = {
-        topLeft: 'sm',
-        topRight: 'sm',
-        bottomRight: 'sm',
-        bottomLeft: 'sm'
-    },
     ...props
-}: InputProps): JSX.Element => {
+}: TextAreaProps): JSX.Element => {
     const [isTouched, setIsTouched] = useState(false)
 
     useEffect(() => {
-        if (isDefaultValue() || !pattern) { return props.setState('default') }
+        if (isDefaultValue()) { return props.setState('default') }
         if (isValid()) { return props.setState('success') }
         return props.setState('error')
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value])
 
-    const borderRadiusClass = () => {
-        const topLeftClass = `border-top-left-radius--${borderRadius.topLeft}`
-        const topRightClass = `border-top-right-radius--${borderRadius.topRight}`
-        const bottomRightClass = `border-bottom-right-radius--${borderRadius.bottomRight}`
-        const bottomLeftClass = `border-bottom-left-radius--${borderRadius.bottomLeft}`
-        return `${topLeftClass} ${topRightClass} ${bottomRightClass} ${bottomLeftClass}`
-    }
-
     const isValid = () => { return new RegExp(pattern).test(value) }
 
-    const isDefaultValue = () => { return !value && !isTouched }
+    const isDefaultValue = () => { return !isTouched && !value }
 
-    const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const onChangeInput = (e: ChangeEvent<HTMLTextAreaElement>) => {
         props.setValue(e.target.value)
-        if (isDefaultValue()) { return props.setState('default') }
-        if (isValid()) { return props.setState('success') }
-        return props.setState('error')
     }
 
     return (
-        <div className="input">
-            {labelValue && <div className={`input--label input--label-${size}`}>
+        <div className="text-area">
+            {labelValue && <div className={`text-area--label text-area--label-${size}`}>
                 <label>{labelValue}</label>
                 {required && <span> *</span>}
             </div>}
             {state !== 'disable' &&
-                <input
+                <textarea
                     value={value}
-                    type={type}
-                    className={`input--element input--element-${size} input--element-${state} ${borderRadiusClass()}`}
+                    className={`text-area--element text-area--element-${size} text-area--element-${state}`}
                     autoComplete={'off'}
                     onChange={(e) => onChangeInput(e)}
                     onFocus={() => setIsTouched(true)}
                     {...props.attributes}
                     {...props.events}
-                >
-                </input>
+                />
             }
             {state === 'disable' &&
                 <div className={`input-disable input-${size}`}>{value}</div>}

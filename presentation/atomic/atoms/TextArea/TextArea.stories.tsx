@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Input, InputStatus } from './Input';
+import { TextArea, InputStatus } from './TextArea';
 
 export default {
-    title: 'Desing System/Atoms/Input',
-    component: Input,
-} as ComponentMeta<typeof Input>;
+    title: 'Desing System/Atoms/TextArea',
+    component: TextArea,
+} as ComponentMeta<typeof TextArea>;
 
-const Template: ComponentStory<typeof Input> = (args) => {
+const Template: ComponentStory<typeof TextArea> = (args) => {
     const [value, setValue] = useState('');
     const [state, setState] = useState<InputStatus>('default');
-    return <Input
+
+    return <TextArea
         {...args}
         value={value}
         setValue={setValue}
