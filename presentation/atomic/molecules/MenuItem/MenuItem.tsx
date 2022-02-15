@@ -4,7 +4,7 @@ import './MenuItem.scss'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { NavLink } from 'react-router-dom'
 import { Title } from '../../atoms/Title/Title'
-import { useWindow } from '../../organisms/Menu/useWindow'
+import { useWindow } from '../../../utils/hooks/useWindow'
 
 interface MenuItemProps {
     name: string;

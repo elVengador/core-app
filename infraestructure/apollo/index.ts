@@ -6,7 +6,9 @@ import { RefreshTokenInput, TokensOutput } from "../../../app/domain/entities";
 import { MUTATION_REFRESH_TOKEN } from "../repository/auth/auth.gql";
 import { API_HOST, API_PORT } from "../../core.enviroments";
 
-const uri = `https://${API_HOST}:${API_PORT}/graphql`
+const PROTOCOL = API_PORT === '443' ? 'https' : 'http'
+const uri = `${PROTOCOL}://${API_HOST}:${API_PORT}/graphql`
+// const uri = `https://palace-api.jnicanor.me:443/graphql`
 console.log('\n\n   -->> URI:', uri);
 const token = () => storage.readSessionStorage({ key: 'access-token' }) || ''
 
