@@ -1,16 +1,14 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { Style } from '../../../utils/interfaces.utils';
+import { InputStatus, Style } from '../../../utils/interfaces.utils';
 
 import './TextArea.scss';
-
-export type InputStatus = 'default' | 'success' | 'error' | 'disable'
 
 interface TextAreaProps {
     value: string
     setValue: React.Dispatch<React.SetStateAction<string>>
     state: InputStatus
     setState: React.Dispatch<React.SetStateAction<InputStatus>>
-    labelValue?: string
+    label?: string
     size?: 'sm' | 'md' | 'lg';
     required?: boolean
     pattern?: string,
@@ -30,7 +28,7 @@ interface TextAreaProps {
 export const TextArea = ({
     value = '',
     state = 'default',
-    labelValue = '',
+    label = '',
     size = 'md',
     required = true,
     pattern = '',
@@ -55,8 +53,8 @@ export const TextArea = ({
 
     return (
         <div className="text-area">
-            {labelValue && <div className={`text-area--label text-area--label-${size}`}>
-                <label>{labelValue}</label>
+            {label && <div className={`text-area--label text-area--label-${size}`}>
+                <label>{label}</label>
                 {required && <span> *</span>}
             </div>}
             {state !== 'disable' &&

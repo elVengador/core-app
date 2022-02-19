@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Input, InputStatus } from './Input';
+import { Input } from './Input';
+import { InputStatus } from '../../../utils/interfaces.utils';
 
 export default {
     title: 'Desing System/Atoms/Input',

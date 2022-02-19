@@ -1,9 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { Style } from '../../../utils/interfaces.utils';
+import { InputStatus, Style } from '../../../utils/interfaces.utils';
 
 import './Input.scss';
-
-export type InputStatus = 'default' | 'success' | 'error' | 'disable'
 
 interface InputProps {
     value: string

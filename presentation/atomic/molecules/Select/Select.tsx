@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Style } from '../../../utils/interfaces.utils';
-import { Button } from '../Button/Button';
+import { InputStatus, Style } from '../../../utils/interfaces.utils';
+import { Button } from '../../atoms/Button/Button';
 
 import './Select.scss';
 
-export type InputStatus = 'default' | 'success' | 'error' | 'disable'
 export type SelectOption = { label: string, value: string }
 
 interface SelectProps {

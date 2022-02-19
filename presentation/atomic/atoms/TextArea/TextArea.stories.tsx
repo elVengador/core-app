@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { TextArea, InputStatus } from './TextArea';
+import { TextArea } from './TextArea';
+import { InputStatus } from '../../../utils/interfaces.utils';
 
 export default {
     title: 'Desing System/Atoms/TextArea',
@@ -23,11 +24,13 @@ const Template: ComponentStory<typeof TextArea> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
+    label: 'this is a text area',
     size: 'md'
 };
 
 export const WithPattern = Template.bind({});
 WithPattern.args = {
+    label: 'this is a text area with pattent ^[A-Z]{5}$',
     size: 'md',
     pattern: '^[A-Z]{5}$'
 };
