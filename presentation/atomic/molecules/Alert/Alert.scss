@@ -1,0 +1,114 @@
+.alert{
+    display: flex;
+    align-items: center;
+    width: 300px;
+    color: var(--fg);
+    background: var(--bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    &--icon{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--light);
+        border-radius: var(--border-radius) 0px 0px var(--border-radius);
+    }
+    &--message{
+        // height: 30px;
+        padding: 5px;
+        width: 270px;
+        overflow: hidden; /* make sure it hides the content that overflows */
+        white-space: nowrap; /* don't break the line */
+        text-overflow: ellipsis;
+    }
+    &--actions{
+        padding: 5px;
+    }
+}
+// .select{
+//     width: 100%;
+//     box-shadow: var(--shadow);
+//     border-radius: 10px;
+//     // border: solid;
+//     background: var(--bg);
+//     &--label{
+//         color: var(--main);
+//         font-weight: 700;
+//         &-sm{
+//             padding: 0px 5px;
+//             font-size: var(--font-size-xs);
+//         }
+//         &-md{
+//             padding: 5px 15px;
+//             font-size: var(--font-size-md);
+//         }
+//         &-lg{
+//             padding: 5px 20px;
+//             font-size: var(--font-size-lg);
+//         }
+//     }
+//     .select-element{
+//         border-radius: 10px;
+//         display: flex;
+//         flex-direction: column;
+//         background: var(--bg_2);
+//         outline: solid 2px var(--main);
+//         position: relative;
+//         &-default{
+//             border: none;
+//             outline: none;
+//         }
+
+//         &-success{
+//             outline: solid 2px var(--success);
+//         }
+
+//         &-error{
+//             outline: solid 2px var(--bad);
+//         }
+//         .item-selected{
+//             width: 100%;
+//             &--input{
+//                 border: none;
+//                 width: calc(100% - 30px);
+//                 padding: 4px 15px;
+//                 font-size: var(--font-size-md);
+//                 margin-right: 30px;
+//                 color: var(--fg);
+//                 background: var(--bg_2);
+//             }
+//             &--input::placeholder{
+//                 color: var(--main);
+//             }
+//         }
+//     }
+
+//     .options{
+//         background: var(--bg_2);
+//         max-height: 100px;
+//         overflow-y: auto;
+//         position: absolute;
+//         top: 26px;
+//         left: 0px;
+//         right: 0px;
+//         border-bottom: solid 2px var(--main);
+//         border-left: solid 2px var(--main);
+//         border-right: solid 2px var(--main);
+//         &--item{
+//             color: var(--fg);
+//             border-top: dashed 2px var(--fg);
+//             padding: 5px 10px;
+//         }
+//         &--item:hover{
+//             color: var(--bg_2);
+//             background: var(--main);
+//             cursor: pointer;
+//         }
+//     }
+//     .options:last-child{
+//         border-bottom-left-radius: 10px;
+//         border-bottom-right-radius: 10px;
+//     }
+// }
