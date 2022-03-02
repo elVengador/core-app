@@ -27,7 +27,7 @@ export const MenuItem = ({ ...props }: MenuItemProps): JSX.Element => {
                 <Title
                     content={buildNameToMenuItem(props.name)}
                     icon={props.icon}
-                    color='in'
+                    color='inherit'
                 />
             </NavLink>
         </div>

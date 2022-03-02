@@ -1,0 +1,33 @@
+.alerts {
+    position: absolute;
+    width: 300px;
+    row-gap: 10px;
+    display: flex;
+    // padding: 0px 4px;
+    // border: dashed 2px royalblue;
+
+    &--top {
+        top: 10px;
+        flex-direction: column;
+    }
+
+    &--bottom {
+        bottom: 10px;
+        flex-direction: column-reverse;
+    }
+
+    &--left {
+        left: 10px;
+    }
+
+    &--center {
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+
+    &--right {
+        right: 10px;
+    }
+}

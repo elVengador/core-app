@@ -1,48 +1,59 @@
-.title{
+.title {
     margin: 0px;
-    color: var(--main);
-    font-weight: 700;
+    font-weight: 300;
     white-space: nowrap;
     display: flex;
     align-items: center;
 }
 
-.title-primary{
-    color: var(--main);
+.title-primary {
+    color: var(--primary);
 }
 
-.title-secondary{
-    color: var(--bg_2);
+.title-secondary {
+    color: var(--secondary);
 }
 
-.title-in{
+.title-dark {
+    color: var(--dark);
+}
+
+.title-light {
+    color: var(--light);
+}
+
+.title-inherit {
     color: inherit;
 }
 
-.title-xs{
+.title-xs {
     font-size: var(--font-size-xs);
 }
 
-.title-md{
+.title-sm {
+    font-size: var(--font-size-sm);
+}
+
+.title-md {
     font-size: var(--font-size-md);
 }
 
-.title-lg{
+.title-lg {
     font-size: var(--font-size-lg);
 }
 
-.icon{
-    // margin-right: 5px;
+.title-xl {
+    font-size: var(--font-size-xl);
 }
 
-.icon-separation-none{
+.icon-separation-none {
     margin-right: 0px;
 }
 
-.icon-separation-sm{
+.icon-separation-sm {
     margin-right: 5px;
 }
 
-.icon-separation-md{
+.icon-separation-md {
     margin-right: 10px;
 }

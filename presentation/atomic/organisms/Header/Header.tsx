@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './Header.scss';
 import { Title } from '../../atoms/Title/Title';
 import { HEADER_TEXT } from '../../../../../app/presentation/configPage.util';
+import { IconButton } from '../../atoms/IconButton/IconButton';
 
 interface HeaderProps {
     title?: string;
@@ -35,8 +36,14 @@ export const Header = ({
     return (
         <header className="header">
             <div className="header--items">
-                <Title content={title} color="secondary"></Title>
-                <button onClick={() => toogleTheme()}>{theme}</button>
+                <div></div>
+                <Title content={title} color="primary"></Title>
+                {/* <button onClick={() => toogleTheme()}>{theme}</button> */}
+                <IconButton
+                    icon={"adjust"}
+                    attributes={{ title: 'Change theme' }}
+                    events={{ onClick: () => toogleTheme() }}
+                />
             </div>
         </header>
     );

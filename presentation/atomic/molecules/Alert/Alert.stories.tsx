@@ -7,7 +7,12 @@ import { userEvent, within } from '@storybook/testing-library';
 export default {
     title: 'Desing System/Molecules/Alert',
     component: Alert,
-    argTypes: { onClick: { action: 'clicked' } },
+    argTypes: {
+        timeToDestroy: {
+            control: { type: 'range', min: 1000, max: 10000, step: 1000 },
+        },
+        onClick: { action: 'clicked' }
+    },
 } as ComponentMeta<typeof Alert>;
 
 const Template: ComponentStory<typeof Alert> = (args) => {
@@ -26,11 +31,11 @@ export const Empty = Template.bind({});
 Empty.args = {
     type: 'INFO',
     value: 'This alert will detroy in 40 seconds',
-    timeToDestroyInSeconds: 40
+    timeToDestroy: 40000
 };
 
 export const CloseAlert = Template.bind({});
-CloseAlert.args = { ...Empty.args };
+CloseAlert.args = { ...Empty.args, value: 'This alert will detroy in 2s' };
 CloseAlert.play = async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     setTimeout(async () => {

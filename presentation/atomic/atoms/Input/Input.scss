@@ -1,95 +1,70 @@
-.input{
+.input {
     width: 100%;
-    &--label{
-        color: var(--main);
-        font-weight: 700;
-        &-sm{
+    &--label {
+        color: var(--fg);
+        font-weight: 500;
+        &-sm {
             padding: 0px 5px;
-            font-size: var(--font-size-xs);
+            font-size: var(--font-size-sm);
         }
-        &-md{
-            padding: 5px 15px;
+        &-md {
+            padding: 5px 10px;
             font-size: var(--font-size-md);
         }
-        &-lg{
-            padding: 5px 20px;
+        &-lg {
+            padding: 5px 15px;
             font-size: var(--font-size-lg);
         }
     }
 
-    &--element{
+    &--element {
+        width: 100%;
+        border: none;
         background: var(--bg_2);
         color: var(--fg);
-        border: none;
-        // border-radius: 35px;
-        width: 100%;
-        // box-shadow: var(--shadow-inner);
         box-shadow: var(--shadow);
+        font-weight: 200;
 
-        &-default{
-            border: none;
+        &-sm {
+            padding: 0px 5px;
+            font-size: var(--font-size-sm);
+        }
+
+        &-md {
+            padding: 3px 10px;
+            font-size: var(--font-size-md);
+        }
+
+        &-lg {
+            padding: 5px 15px;
+            font-size: var(--font-size-lg);
+        }
+        &-default {
+            border-bottom: solid 2px var(--fg);
+            outline: none;
+        }
+        &-default:focus {
+            border-bottom: solid 2px var(--fg);
             outline: none;
         }
 
-        &-success{
-            outline: solid 2px var(--success);
+        &-success {
+            border-bottom: solid 2px var(--success);
+            color: var(--success);
         }
 
-        &-error{
-            outline: solid 2px var(--bad);
+        &-error {
+            border-bottom: solid 2px var(--error);
+            color: var(--error);
         }
 
-        &-disable{
-            background: var(--disable);
-            color: var(--fg);
-            border: none;
-            border-radius: 35px;
-        }
-
-        &-sm{
-            padding: 2px 5px;
-        }
-
-        &-md{
-            padding: 10px 15px;
-        }
-
-        &-lg{
-            padding: 15px 20px;
+        &-disable {
+            border-bottom: solid 2px var(--dark-disabled);
+            color: var(--dark-disabled);
         }
     }
 
-    &--element:focus{
-        background: var(--bg_2);
-        color: var(--fg);
-        border: none;
-        // border-radius: 35px;
-        width: 100%;
+    &--element:focus {
+        outline: none;
     }
-}
-
-
-.border-top-left-radius{
-    &--none{ border-top-left-radius: 0px;}
-    &--none:focus{ border-top-left-radius: 0px;}
-    &--sm{border-top-left-radius: 10px;}
-    &--sm:focus{border-top-left-radius: 10px;}
-}
-.border-top-right-radius{
-    &--none{border-top-right-radius: 0px;}
-    &--none:focus{border-top-right-radius: 0px;}
-    &--sm{border-top-right-radius: 10px;}
-    &--sm:focus{border-top-right-radius: 10px;}
-}
-.border-bottom-right-radius{
-    &--none{border-bottom-right-radius: 0px;}
-    &--none:focus{border-bottom-right-radius: 0px;}
-    &--sm{border-bottom-right-radius: 10px;}
-    &--sm:focus{border-bottom-right-radius: 10px;}
-}
-.border-bottom-left-radius{
-    &--none{border-bottom-left-radius: 0px;}
-    &--none:focus{border-bottom-left-radius: 0px;}
-    &--sm{border-bottom-left-radius: 10px;}
-    &--sm:focus{border-bottom-left-radius: 10px;}
 }

@@ -6,11 +6,11 @@ import './Button.scss';
 import { Style } from '../../../utils/interfaces.utils';
 
 interface ButtonProps {
-    size?: 'sm' | 'md' | 'lg';
+    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     icon?: IconProp | null;
     content: string;
-    type?: 'normal' | 'alpha';
-    state?: 'enable' | 'disable';
+    color?: 'primary' | 'secondary' | 'light' | 'dark'
+    disabled?: boolean;
     borderRadius?: {
         topLeft: 'none' | 'sm' | 'md' | 'lg',
         topRight: 'none' | 'sm' | 'md' | 'lg',
@@ -21,6 +21,7 @@ interface ButtonProps {
         style?: Style;
         className?: string;
         title?: string;
+        type?: 'button' | 'submit'
     }
     events?: {
         onClick?: () => void,
@@ -32,13 +33,16 @@ export const Button = ({
     size = 'md',
     content = '...',
     icon = null,
-    type = 'normal',
-    state = 'enable',
+    color = 'primary',
+    disabled = false,
     borderRadius = {
         topLeft: 'sm',
         topRight: 'sm',
         bottomRight: 'sm',
         bottomLeft: 'sm'
+    },
+    attributes = {
+        type: 'button'
     },
     ...props
 }: ButtonProps): JSX.Element => {
@@ -51,12 +55,15 @@ export const Button = ({
         return `${topLeftClass} ${topRightClass} ${bottomRightClass} ${bottomLeftClass}`
     }
 
+    const classStateSufix = disabled ? '__disabled' : ''
+
     return (
         <button
-            type="button"
-            className={`btn btn-${state} btn-${size} btn-${type} text-${size} ${borderRadiusClass()}`}
-            {...props.attributes}
+            type={attributes?.type}
+            className={`btn btn--${size} btn--${color}${classStateSufix} ${borderRadiusClass()}`}
+            {...attributes}
             {...props.events}
+            disabled={disabled}
         >
             {icon && <FontAwesomeIcon icon={icon} className={content ? "mr-sm" : ""} />}
             {content}

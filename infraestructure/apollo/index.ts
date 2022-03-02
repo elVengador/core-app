@@ -9,7 +9,6 @@ import { API_HOST, API_PORT } from "../../core.enviroments";
 const PROTOCOL = API_PORT === '443' ? 'https' : 'http'
 const uri = `${PROTOCOL}://${API_HOST}:${API_PORT}/graphql`
 // const uri = `https://palace-api.jnicanor.me:443/graphql`
-console.log('\n\n   -->> URI:', uri);
 const token = () => storage.readSessionStorage({ key: 'access-token' }) || ''
 
 const httpLink = new HttpLink({ uri });

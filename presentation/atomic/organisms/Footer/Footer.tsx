@@ -1,21 +1,21 @@
 import React from 'react';
+import { Title } from '../../atoms/Title/Title';
 
 import './Footer.scss';
-import { Title } from '../../atoms/Title/Title';
-import { FOOTER_TEXT } from '../../../../../app/presentation/configPage.util';
 
 interface FooterProps {
-    title?: string;
+    elementOptions?: JSX.Element;
 }
 
-export const Footer = ({
-    title = FOOTER_TEXT,
+export const Footer2 = ({
+    elementOptions = <Title content={`by elVengador - ${new Date().getFullYear()}`} ></Title>
+    // ...props
 }: FooterProps): JSX.Element => {
 
     return (
         <footer className="footer">
             <div className="footer--items">
-                <Title content={title} size="xs" color="secondary"></Title>
+                {elementOptions}
             </div>
         </footer>
     );

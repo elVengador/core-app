@@ -10,24 +10,32 @@ export default {
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = (args) => {
-    const [value, setValue] = useState('');
-    const [state, setState] = useState<InputStatus>('default');
     return <Input
         {...args}
-        value={value}
-        setValue={setValue}
-        state={state}
-        setState={setState}
     />;
 }
 
 export const Default = Template.bind({});
 Default.args = {
-    size: 'md'
+    labelValue: 'Name',
+    size: 'md',
+    attributes: { id: 'default-input', placeholder: 'Write here' }
 };
 
 export const WithPattern = Template.bind({});
 WithPattern.args = {
+    labelValue: 'Name',
     size: 'md',
+    attributes: { id: 'input-with-pattern', placeholder: 'with this pattern ^[A-Z]{5}$' },
+    pattern: '^[A-Z]{5}$'
+};
+
+export const Disable = Template.bind({});
+Disable.args = {
+    // initialValue: 'this input is disabled',
+    // initialState: 'disable',
+    labelValue: 'Disable input',
+    size: 'md',
+    attributes: { id: 'disabled-input', placeholder: 'you cant write here' },
     pattern: '^[A-Z]{5}$'
 };

@@ -19,21 +19,13 @@ Default.args = {
 export const Disable = Template.bind({});
 Disable.args = {
     size: 'md',
-    type: 'normal',
+    disabled: true,
     content: 'Disable Button'
 };
 
 export const ButtonWithIcon = Template.bind({});
 ButtonWithIcon.args = {
     size: 'md',
-    content: 'Icon',
+    content: 'Button with Icon',
     icon: 'coffee'
-};
-
-export const ButtonAlpha = Template.bind({});
-ButtonAlpha.args = {
-    size: 'md',
-    content: 'Icon',
-    icon: 'coffee',
-    type: 'alpha'
 };

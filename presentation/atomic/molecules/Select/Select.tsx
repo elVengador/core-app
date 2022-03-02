@@ -125,7 +125,6 @@ export const Select = ({
                                 content=''
                                 icon='caret-down'
                                 size='sm'
-                                type='alpha'
                                 borderRadius={{ topLeft: 'none', topRight: 'sm', bottomRight: 'sm', bottomLeft: 'none', }}
                                 events={{ onClick: () => setCanShowOptions(true) }}
                                 attributes={{ style: { marginLeft: '-30px' } }}
@@ -136,7 +135,6 @@ export const Select = ({
                                 content=''
                                 icon='times'
                                 size='sm'
-                                type='alpha'
                                 borderRadius={{ topLeft: 'none', topRight: 'sm', bottomRight: 'none', bottomLeft: 'none', }}
                                 events={{ onClick: () => setCanShowOptions(false) }}
                                 attributes={{ style: { marginLeft: '-30px' } }}

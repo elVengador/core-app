@@ -4,23 +4,17 @@ import { InputStatus, Style } from '../../../utils/interfaces.utils';
 import './Input.scss';
 
 interface InputProps {
-    value: string
-    setValue: React.Dispatch<React.SetStateAction<string>>
-    state: InputStatus
-    setState: React.Dispatch<React.SetStateAction<InputStatus>>
+    value: string,
+    setValue: React.Dispatch<React.SetStateAction<string>>,
+    state: string,
+    setState: React.Dispatch<React.SetStateAction<InputStatus>>,
     labelValue?: string
     size?: 'sm' | 'md' | 'lg';
     required?: boolean
     pattern?: string,
     type?: 'text' | 'date' | 'password';
-    borderRadius?: {
-        topLeft: 'none' | 'sm' | 'md' | 'lg',
-        topRight: 'none' | 'sm' | 'md' | 'lg',
-        bottomRight: 'none' | 'sm' | 'md' | 'lg',
-        bottomLeft: 'none' | 'sm' | 'md' | 'lg'
-    }
-    attributes?: {
-        id?: string;
+    attributes: {
+        id: string;
         name?: string;
         placeholder?: string;
         style?: Style;
@@ -33,41 +27,28 @@ interface InputProps {
 }
 
 export const Input = ({
-    value = '',
-    state = 'default',
     labelValue = '',
     size = 'md',
     required = true,
     pattern = '',
     type = 'text',
-    borderRadius = {
-        topLeft: 'sm',
-        topRight: 'sm',
-        bottomRight: 'sm',
-        bottomLeft: 'sm'
-    },
     ...props
 }: InputProps): JSX.Element => {
+    // const [value, setValue] = useState(initialValue)
+    // const [state, setState] = useState<InputStatus>(initialState)
     const [isTouched, setIsTouched] = useState(false)
 
     useEffect(() => {
+        if (props.state === 'disable') { return }
         if (isDefaultValue() || !pattern) { return props.setState('default') }
         if (isValid()) { return props.setState('success') }
         return props.setState('error')
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value])
+    }, [props.value])
 
-    const borderRadiusClass = () => {
-        const topLeftClass = `border-top-left-radius--${borderRadius.topLeft}`
-        const topRightClass = `border-top-right-radius--${borderRadius.topRight}`
-        const bottomRightClass = `border-bottom-right-radius--${borderRadius.bottomRight}`
-        const bottomLeftClass = `border-bottom-left-radius--${borderRadius.bottomLeft}`
-        return `${topLeftClass} ${topRightClass} ${bottomRightClass} ${bottomLeftClass}`
-    }
+    const isValid = () => { return new RegExp(pattern).test(props.value) }
 
-    const isValid = () => { return new RegExp(pattern).test(value) }
-
-    const isDefaultValue = () => { return !value && !isTouched }
+    const isDefaultValue = () => { return !props.value && !isTouched }
 
     const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
         props.setValue(e.target.value)
@@ -79,15 +60,15 @@ export const Input = ({
     return (
         <div className="input">
             {labelValue && <div className={`input--label input--label-${size}`}>
-                <label>{labelValue}</label>
+                <label htmlFor={props.attributes.id}>{labelValue}</label>
                 {required && <span> *</span>}
             </div>}
-            {state !== 'disable' &&
+            {props.state !== 'disable' &&
                 <input
-                    value={value}
+                    value={props.value}
                     type={type}
-                    className={`input--element input--element-${size} input--element-${state} ${borderRadiusClass()}`}
-                    autoComplete={'off'}
+                    className={`input--element input--element-${size} input--element-${props.state}`}
+                    autoComplete='off'
                     onChange={(e) => onChangeInput(e)}
                     onFocus={() => setIsTouched(true)}
                     {...props.attributes}
@@ -95,8 +76,8 @@ export const Input = ({
                 >
                 </input>
             }
-            {state === 'disable' &&
-                <div className={`input-disable input-${size}`}>{value}</div>}
+            {props.state === 'disable' &&
+                <div className={`input--element-disable input-${size}`}>{props.value}</div>}
         </div>
     );
 };

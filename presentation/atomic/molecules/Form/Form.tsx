@@ -6,7 +6,7 @@ import { Button } from '../../atoms/Button/Button';
 
 interface FormProps {
     title: string;
-    onSubmit: () => void;
+    onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
     children: JSX.Element
 }
 
@@ -15,9 +15,9 @@ export const Form = ({
     ...props
 }: FormProps): JSX.Element => {
     return (
-        <div className="form">
+        <form className="form" onSubmit={props.onSubmit}>
             <div className="form-header">
-                <Title content={title} size="lg"></Title>
+                <Title content={title} size="lg" color='inherit'></Title>
             </div>
             <div className="form-body">
                 {props.children}
@@ -26,9 +26,9 @@ export const Form = ({
                 <Button
                     content='ok'
                     icon="check"
-                    events={{ onClick: () => props.onSubmit() }}
+                    attributes={{ type: 'submit' }}
                 />
             </div>
-        </div>
+        </form>
     );
 };

@@ -1,25 +1,23 @@
-.form{
+.form {
     background: var(--bg);
+    color: var(--fg);
     border-radius: 10px;
     box-shadow: var(--shadow);
-    padding: 20px;
     width: inherit;
 }
 
-.form-header{
-    padding-bottom: 10px;
+.form-header {
+    padding-bottom: 20px;
     display: flex;
     justify-content: center;
 }
 
-.form-body{
+.form-body {
     width: 100%;
-    // border: solid;
-
 }
 
-.form-footer{
-    padding-top: 10px;
+.form-footer {
+    padding-top: 20px;
     display: flex;
     justify-content: center;
 }

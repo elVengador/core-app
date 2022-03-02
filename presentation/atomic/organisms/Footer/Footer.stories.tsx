@@ -1,16 +1,16 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Footer } from './Footer';
+import { Footer2 } from './Footer';
 
 export default {
-    title: 'Desing System/Organisims/Footer',
-    component: Footer,
-} as ComponentMeta<typeof Footer>;
+    title: 'Desing System/Organisims/Footer2',
+    component: Footer2,
+} as ComponentMeta<typeof Footer2>;
 
-const Template: ComponentStory<typeof Footer> = (args) => <Footer {...args} />;
+const Template: ComponentStory<typeof Footer2> = (args) => <Footer2 {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    title: 'Titulo del Formulario'
+    elementOptions: <div>This is the footer</div>
 };

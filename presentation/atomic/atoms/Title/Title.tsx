@@ -7,11 +7,11 @@ import { Style } from '../../../utils/interfaces.utils';
 
 type IconSeparation = 'none' | 'sm' | 'md'
 interface TitleProps {
-    size?: 'xs' | 'md' | 'lg';
+    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     content: string;
     icon?: IconProp | null;
     iconSeparation?: IconSeparation;
-    color?: 'primary' | 'secondary' | 'in',
+    color?: 'primary' | 'secondary' | 'dark' | 'light' | 'inherit',
     attributes?: {
         style?: Style;
         className?: string
@@ -31,20 +31,34 @@ export const Title = ({
         <>
             {
                 size === 'xs' &&
-                <span className={`title title-${size} title-${color}`} {...props.attributes}>
+                <h5 className={`title title-${size} title-${color}`} {...props.attributes}>
                     {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} />}
                     {content}
-                </span>
+                </h5>
             }
             {
-                size === 'md' &&
+                size === 'sm' &&
                 <h4 className={`title title-${size} title-${color}`} {...props.attributes}>
                     {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} />}
                     {content}
                 </h4>
             }
             {
+                size === 'md' &&
+                <h3 className={`title title-${size} title-${color}`} {...props.attributes}>
+                    {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} />}
+                    {content}
+                </h3>
+            }
+            {
                 size === 'lg' &&
+                <h2 className={`title title-${size} title-${color}`} {...props.attributes}>
+                    {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} />}
+                    {content}
+                </h2>
+            }
+            {
+                size === 'xl' &&
                 <h1 className={`title title-${size} title-${color}`} {...props.attributes}>
                     {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} />}
                     {content}
