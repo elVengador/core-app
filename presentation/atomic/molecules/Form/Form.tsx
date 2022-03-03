@@ -17,7 +17,7 @@ export const Form = ({
     return (
         <form className="form" onSubmit={props.onSubmit}>
             <div className="form-header">
-                <Title content={title} size="lg" color='inherit'></Title>
+                <Title content={title} size="lg" color='fg'></Title>
             </div>
             <div className="form-body">
                 {props.children}

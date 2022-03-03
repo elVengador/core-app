@@ -1,85 +1,85 @@
-.select{
+.select {
     width: 100%;
-    box-shadow: var(--shadow);
-    border-radius: 10px;
-    // border: solid;
-    background: var(--bg);
-    &--label{
-        color: var(--main);
-        font-weight: 700;
-        &-sm{
+    &--label {
+        color: var(--fg);
+        font-weight: 400;
+        &-sm {
             padding: 0px 5px;
             font-size: var(--font-size-xs);
         }
-        &-md{
-            padding: 5px 15px;
+        &-md {
+            padding: 5px 10px;
             font-size: var(--font-size-md);
         }
-        &-lg{
-            padding: 5px 20px;
+        &-lg {
+            padding: 5px 15px;
             font-size: var(--font-size-lg);
         }
     }
-    .select-element{
-        border-radius: 10px;
+    .select-element {
         display: flex;
         flex-direction: column;
         background: var(--bg_2);
-        outline: solid 2px var(--main);
         position: relative;
-        &-default{
-            border: none;
-            outline: none;
+        &-default {
+            color: var(--fg);
+            border-bottom: solid 2px var(--fg);
         }
 
-        &-success{
-            outline: solid 2px var(--success);
+        &-success {
+            // outline: solid 2px var(--success);
+            color: var(--success);
+            border-bottom: solid 2px var(--success);
         }
 
-        &-error{
-            outline: solid 2px var(--bad);
+        &-error {
+            // outline: solid 2px var(--bad);
+            color: var(--error);
+            border-bottom: solid 2px var(--error);
         }
-        .item-selected{
+        .item-selected {
             width: 100%;
-            &--input{
-                border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &--input {
                 width: calc(100% - 30px);
                 padding: 4px 15px;
                 font-size: var(--font-size-md);
-                margin-right: 30px;
-                color: var(--fg);
-                background: var(--bg_2);
+                color: inherit;
+                background-color: inherit;
+                border: none;
             }
-            &--input::placeholder{
+            &--input::placeholder {
                 color: var(--main);
             }
         }
     }
 
-    .options{
-        background: var(--bg_2);
+    .options {
+        background: var(--bg);
         max-height: 100px;
         overflow-y: auto;
         position: absolute;
         top: 26px;
         left: 0px;
         right: 0px;
-        border-bottom: solid 2px var(--main);
-        border-left: solid 2px var(--main);
-        border-right: solid 2px var(--main);
-        &--item{
+        border-right: solid 2px var(--fg);
+        border-bottom: solid 2px var(--fg);
+        border-left: solid 2px var(--fg);
+        &--item {
             color: var(--fg);
             border-top: dashed 2px var(--fg);
             padding: 5px 10px;
         }
-        &--item:hover{
-            color: var(--bg_2);
-            background: var(--main);
+        &--item:hover {
+            color: var(--fg);
+            background: var(--bg-primary);
             cursor: pointer;
         }
     }
-    .options:last-child{
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-    }
+    // .options:last-child {
+    //     border-bottom-left-radius: 10px;
+    //     border-bottom-right-radius: 10px;
+    // }
 }

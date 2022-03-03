@@ -11,9 +11,10 @@ interface TitleProps {
     content: string;
     icon?: IconProp | null;
     iconSeparation?: IconSeparation;
-    color?: 'primary' | 'secondary' | 'dark' | 'light' | 'inherit',
+    color?: 'primary' | 'secondary' | 'dark' | 'light' | 'fg',
     attributes?: {
-        style?: Style;
+        title?: string
+        style?: Style
         className?: string
     }
     onClick?: () => void;

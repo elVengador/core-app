@@ -1,4 +1,4 @@
-.icon-btn{
+.icon-btn {
     width: 20px;
     height: 20px;
     padding: 0px;
@@ -6,29 +6,57 @@
     align-items: center;
     justify-content: center;
     background: none;
+    color: inherit;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    &--enable{
-        &__primary{color: var(--primary)}
-        &__secondary{color: var(--secondary)}
-        &__dark{color: var(--dark)}
-        &__light{color: var(--light)}
-        &__fg{color:var(--fg)}
+    &--enable {
+        &__primary {
+            color: var(--primary);
+        }
+        &__secondary {
+            color: var(--secondary);
+        }
+        &__dark {
+            color: var(--dark);
+        }
+        &__light {
+            color: var(--light);
+        }
+        &__fg {
+            color: var(--fg);
+        }
 
-        &__primary:hover{background: var(--dark);}
-        &__secondary:hover{background: var(--light);}
-        &__dark:hover{background: var(--light);}
-        &__light:hover{background: var(--dark);}
-        &__fg:hover{color:var(--bg)}
-        svg{
-            filter: drop-shadow(var(--shadow-sm));
+        &__primary:hover {
+            background: var(--dark);
+        }
+        &__secondary:hover {
+            background: var(--light);
+        }
+        &__dark:hover {
+            background: var(--light);
+        }
+        &__light:hover {
+            background: var(--dark);
+        }
+        &__fg:hover {
+            // color: var(--fg);
+            // background: var(--dark);
+            background: var(--primary);
         }
     }
-    &--disable{
-        &__primary{color: var(--primary-disabled)}
-        &__secondary{color: var(--secondary-disabled)}
-        &__dark{color: var(--dark-disabled)}
-        &__light{color: var(--light-disabled)}
+    &--disable {
+        &__primary {
+            color: var(--primary-disabled);
+        }
+        &__secondary {
+            color: var(--secondary-disabled);
+        }
+        &__dark {
+            color: var(--dark-disabled);
+        }
+        &__light {
+            color: var(--light-disabled);
+        }
     }
 }

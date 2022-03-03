@@ -26,6 +26,10 @@
     color: inherit;
 }
 
+.title-fg {
+    color: var(--fg);
+}
+
 .title-xs {
     font-size: var(--font-size-xs);
 }

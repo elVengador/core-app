@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { InputStatus, Style } from '../../../utils/interfaces.utils';
-import { Button } from '../../atoms/Button/Button';
+import { IconButton } from '../../atoms/IconButton/IconButton';
 
 import './Select.scss';
 
@@ -100,11 +100,6 @@ export const Select = ({
             {state !== 'disable' &&
                 <div
                     className={`select-element select-element-${state}`}
-                    style={{
-                        borderTopLeftRadius: '10px',
-                        borderBottomLeftRadius: canShowOptions ? '0px' : '10px',
-                        borderBottomRightRadius: canShowOptions ? '0px' : '10px',
-                    }}
                 >
                     <div className={`item-selected item-selected-${state}`}>
                         <input
@@ -115,29 +110,21 @@ export const Select = ({
                             onFocus={() => { setIsTouched(true); setCanShowOptions(true) }}
                             onBlur={() => { setCanShowOptions(false) }}
                             onKeyDown={(e) => { onEscDown(e) }}
-                            style={{
-                                borderTopLeftRadius: '10px',
-                                borderBottomLeftRadius: canShowOptions ? '0px' : '10px',
-                            }}
                         />
                         {
-                            !canShowOptions && <Button
-                                content=''
+                            !canShowOptions && <IconButton
                                 icon='caret-down'
-                                size='sm'
-                                borderRadius={{ topLeft: 'none', topRight: 'sm', bottomRight: 'sm', bottomLeft: 'none', }}
+                                color='fg'
                                 events={{ onClick: () => setCanShowOptions(true) }}
-                                attributes={{ style: { marginLeft: '-30px' } }}
+                                attributes={{ title: 'Show options' }}
                             />
                         }
                         {
-                            canShowOptions && <Button
-                                content=''
+                            canShowOptions && <IconButton
                                 icon='times'
-                                size='sm'
-                                borderRadius={{ topLeft: 'none', topRight: 'sm', bottomRight: 'none', bottomLeft: 'none', }}
+                                color='fg'
                                 events={{ onClick: () => setCanShowOptions(false) }}
-                                attributes={{ style: { marginLeft: '-30px' } }}
+                                attributes={{ title: 'Hide options' }}
                             />
                         }
                     </div>
