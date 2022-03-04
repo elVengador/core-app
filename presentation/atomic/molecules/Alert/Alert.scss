@@ -5,10 +5,11 @@
     color: var(--fg);
     background: var(--bg);
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm-fg);
     &--icon {
         width: 40px;
-        height: 40px;
+        height: 60px;
+        // height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -19,9 +20,10 @@
         // height: 30px;
         padding: 5px;
         width: 270px;
-        overflow: hidden; /* make sure it hides the content that overflows */
-        white-space: nowrap; /* don't break the line */
-        text-overflow: ellipsis;
+        // overflow: hidden; /* make sure it hides the content that overflows */
+        // white-space: nowrap; /* don't break the line */
+        // text-overflow: ellipsis;
+        font-size: var(--font-size-md);
     }
     &--actions {
         padding: 5px;

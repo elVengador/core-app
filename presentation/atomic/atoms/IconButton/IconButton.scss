@@ -40,8 +40,7 @@
             background: var(--dark);
         }
         &__fg:hover {
-            // color: var(--fg);
-            // background: var(--dark);
+            color: var(--dark);
             background: var(--primary);
         }
     }

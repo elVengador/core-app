@@ -11,6 +11,7 @@ interface TitleProps {
     content: string;
     icon?: IconProp | null;
     iconSeparation?: IconSeparation;
+    iconSpin?: boolean,
     color?: 'primary' | 'secondary' | 'dark' | 'light' | 'fg',
     attributes?: {
         title?: string
@@ -25,6 +26,7 @@ export const Title = ({
     content = '...',
     icon = null,
     iconSeparation = 'sm',
+    iconSpin = false,
     color = 'primary',
     ...props
 }: TitleProps): JSX.Element => {
@@ -33,35 +35,35 @@ export const Title = ({
             {
                 size === 'xs' &&
                 <h5 className={`title title-${size} title-${color}`} {...props.attributes}>
-                    {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} />}
+                    {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} spin={iconSpin} />}
                     {content}
                 </h5>
             }
             {
                 size === 'sm' &&
                 <h4 className={`title title-${size} title-${color}`} {...props.attributes}>
-                    {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} />}
+                    {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} spin={iconSpin} />}
                     {content}
                 </h4>
             }
             {
                 size === 'md' &&
                 <h3 className={`title title-${size} title-${color}`} {...props.attributes}>
-                    {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} />}
+                    {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} spin={iconSpin} />}
                     {content}
                 </h3>
             }
             {
                 size === 'lg' &&
                 <h2 className={`title title-${size} title-${color}`} {...props.attributes}>
-                    {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} />}
+                    {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} spin={iconSpin} />}
                     {content}
                 </h2>
             }
             {
                 size === 'xl' &&
                 <h1 className={`title title-${size} title-${color}`} {...props.attributes}>
-                    {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} />}
+                    {icon && <FontAwesomeIcon icon={icon} className={`icon icon-separation-${iconSeparation}`} spin={iconSpin} />}
                     {content}
                 </h1>
             }

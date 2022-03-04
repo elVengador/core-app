@@ -27,13 +27,11 @@
         }
 
         &-success {
-            // outline: solid 2px var(--success);
             color: var(--success);
             border-bottom: solid 2px var(--success);
         }
 
         &-error {
-            // outline: solid 2px var(--bad);
             color: var(--error);
             border-bottom: solid 2px var(--error);
         }
@@ -55,31 +53,26 @@
             }
         }
     }
-
-    .options {
-        background: var(--bg);
-        max-height: 100px;
-        overflow-y: auto;
-        position: absolute;
-        top: 26px;
-        left: 0px;
-        right: 0px;
-        border-right: solid 2px var(--fg);
-        border-bottom: solid 2px var(--fg);
-        border-left: solid 2px var(--fg);
-        &--item {
-            color: var(--fg);
-            border-top: dashed 2px var(--fg);
-            padding: 5px 10px;
-        }
-        &--item:hover {
-            color: var(--fg);
-            background: var(--bg-primary);
-            cursor: pointer;
-        }
+}
+.select-options {
+    background: var(--bg);
+    max-height: 100px;
+    overflow-y: auto;
+    position: absolute;
+    top: 26px;
+    left: 0px;
+    right: 0px;
+    border-right: solid 2px var(--fg);
+    border-bottom: solid 2px var(--fg);
+    border-left: solid 2px var(--fg);
+    &--item {
+        color: var(--fg);
+        border-top: dashed 2px var(--fg);
+        padding: 5px 10px;
     }
-    // .options:last-child {
-    //     border-bottom-left-radius: 10px;
-    //     border-bottom-right-radius: 10px;
-    // }
+    &--item:hover {
+        color: var(--fg);
+        background: var(--primary);
+        cursor: pointer;
+    }
 }

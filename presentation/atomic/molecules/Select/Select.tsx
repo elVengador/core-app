@@ -15,8 +15,8 @@ interface SelectProps {
     options: SelectOption[]
     size?: 'sm' | 'md' | 'lg';
     required?: boolean
-    attributes?: {
-        id?: string;
+    attributes: {
+        id: string;
         name?: string;
         placeholder?: string;
         style?: Style;
@@ -38,48 +38,56 @@ export const Select = ({
 }: SelectProps): JSX.Element => {
     const [currentLabel, setCurrentLabel] = useState('')
     const [searchText, setSearchText] = useState('')
-    const [filteredOptions, setFilteredOptions] = useState<SelectOption[]>([])
+    const [filteredOptions, setFilteredOptions] = useState<SelectOption[]>(props.options)
     const [canShowOptions, setCanShowOptions] = useState(false)
     const [isTouched, setIsTouched] = useState(false)
 
     useEffect(() => {
-        const optionSelected = props.options.find(cur => cur.value === value)
-        if (!optionSelected) { return reset() }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+        const getCurrentLabelFromValue = () => {
+            const optionFinded = props.options.find(cur => cur.value === value)
+            if (!optionFinded) { return '' }
+            return optionFinded.label
+        }
+
+        const setSelectState = (labelFinded: string) => {
+            const isDefaultValue = !value && !isTouched
+            const isValid = value && labelFinded
+
+            if (isDefaultValue) { return props.setState('default') }
+            if (isValid) { return props.setState('success') }
+            return props.setState('error')
+        }
+
+        const labelFinded = getCurrentLabelFromValue()
+        setCurrentLabel(labelFinded)
+        setSelectState(labelFinded)
+        console.log('[select]');
+    }, [isTouched, props, props.options, value])
 
     useEffect(() => {
-        if (isDefaultValue()) { return props.setState('default') }
-        if (isValid()) { return props.setState('success') }
-        return props.setState('error')
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value])
+        const filterOptionBySearchText = (newSearchText: string) => {
+            if (!newSearchText) return props.options
+            return props.options.filter(cur => cur.label.includes(newSearchText))
+        }
 
-    useEffect(() => {
-        const currentFilteredOptions = searchText ? props.options.filter(cur => cur.label.includes(searchText)) : props.options
-        setFilteredOptions(currentFilteredOptions)
+        const optionsFiltered = filterOptionBySearchText(searchText)
+        setFilteredOptions(optionsFiltered)
     }, [props.options, searchText])
 
-    const reset = () => {
-        setCurrentLabel('')
-        props.setValue('')
-    }
+    // const isValid = () => { return value && currentLabel }
 
-    const isValid = () => { return value && currentLabel }
-
-    const isDefaultValue = () => { return !value && !isTouched }
+    // const isDefaultValue = () => { return !value && !isTouched }
 
     const onChangeOption = (option: SelectOption) => {
         props.setValue(option.value)
-        setCurrentLabel(option.label)
+        // setCurrentLabel(option.label)
         setSearchText('')
         setCanShowOptions(false)
     }
 
     const buildFilterOptions = () => {
         return filteredOptions.map((cur, idx) => <div
-            className='options--item'
-            // onClick={() => onChangeOption(cur)}
+            className='select-options--item'
             onMouseDown={() => onChangeOption(cur)}
             key={idx}
         >
@@ -88,13 +96,31 @@ export const Select = ({
     }
 
     const onEscDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Escape') { e.currentTarget.blur(); setSearchText('') }
+        if (e.key === 'Escape') {
+            e.currentTarget.blur();
+            setSearchText('')
+        }
+    }
+
+    const onHideOptions = () => {
+        console.log('hide');
+        setCanShowOptions(false)
+        setSearchText('')
+    }
+
+    // const filterOptionBySearchText = (newSearchText: string) => {
+    //     if (newSearchText) return props.options
+    //     return props.options.filter(cur => cur.label.includes(newSearchText))
+    // }
+
+    const onChangeSearchText = (newSearchText: string) => {
+        setSearchText(newSearchText)
     }
 
     return (
         <div className="select">
             {labelValue && <div className={`select--label select--label-${size}`}>
-                <label>{labelValue}</label>
+                <label htmlFor={props.attributes.id}>{labelValue}</label>
                 {required && <span> *</span>}
             </div>}
             {state !== 'disable' &&
@@ -103,12 +129,13 @@ export const Select = ({
                 >
                     <div className={`item-selected item-selected-${state}`}>
                         <input
+                            id={props.attributes.id}
                             className='item-selected--input'
                             value={searchText}
                             placeholder={currentLabel}
-                            onChange={(e) => setSearchText(e.target.value)}
+                            onChange={(e) => onChangeSearchText(e.currentTarget.value)}
                             onFocus={() => { setIsTouched(true); setCanShowOptions(true) }}
-                            onBlur={() => { setCanShowOptions(false) }}
+                            onBlur={() => { onHideOptions() }}
                             onKeyDown={(e) => { onEscDown(e) }}
                         />
                         {
@@ -123,13 +150,13 @@ export const Select = ({
                             canShowOptions && <IconButton
                                 icon='times'
                                 color='fg'
-                                events={{ onClick: () => setCanShowOptions(false) }}
+                                events={{ onClick: () => onHideOptions() }}
                                 attributes={{ title: 'Hide options' }}
                             />
                         }
                     </div>
                     {
-                        canShowOptions && <div className='options'>
+                        canShowOptions && <div className='select-options'>
                             {buildFilterOptions()}
                         </div>
                     }

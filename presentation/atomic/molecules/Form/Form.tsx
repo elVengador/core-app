@@ -6,12 +6,14 @@ import { Button } from '../../atoms/Button/Button';
 
 interface FormProps {
     title: string;
+    loading: boolean;
     onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
     children: JSX.Element
 }
 
 export const Form = ({
     title = '',
+    loading = false,
     ...props
 }: FormProps): JSX.Element => {
     return (
@@ -23,11 +25,12 @@ export const Form = ({
                 {props.children}
             </div>
             <div className="form-footer">
-                <Button
+                {!loading && <Button
                     content='ok'
                     icon="check"
                     attributes={{ type: 'submit' }}
-                />
+                />}
+                {loading && <Title content='Loading' icon={'spinner'} iconSpin={true} color="fg" />}
             </div>
         </form>
     );
