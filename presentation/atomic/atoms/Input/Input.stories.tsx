@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Input } from './Input';
-import { InputStatus } from '../../../utils/interfaces.utils';
+// import { InputStatus } from '../../../utils/interfaces.utils';
+import { useInput } from '../../../utils/hooks/useInput';
 
 export default {
     title: 'Desing System/Atoms/Input',
@@ -10,8 +11,13 @@ export default {
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = (args) => {
+    const [value, setValue, state, setState] = useInput()
     return <Input
         {...args}
+        value={value}
+        setValue={setValue}
+        state={state}
+        setState={setState}
     />;
 }
 
@@ -30,12 +36,11 @@ WithPattern.args = {
     pattern: '^[A-Z]{5}$'
 };
 
-export const Disable = Template.bind({});
-Disable.args = {
-    // initialValue: 'this input is disabled',
-    // initialState: 'disable',
-    labelValue: 'Disable input',
-    size: 'md',
-    attributes: { id: 'disabled-input', placeholder: 'you cant write here' },
-    pattern: '^[A-Z]{5}$'
-};
+// export const Disable = Template.bind({});
+// Disable.args = {
+//     labelValue: 'Disable input',
+//     size: 'md',
+//     attributes: { id: 'disabled-input', placeholder: 'you cant write here' },
+//     pattern: '^[A-Z]{5}$',
+//     state: 'disable'
+// };

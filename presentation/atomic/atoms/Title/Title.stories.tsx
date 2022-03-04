@@ -22,9 +22,17 @@ SmallLabel.args = {
     content: 'Small Label'
 };
 
-export const LargeLabel = Template.bind({});
-LargeLabel.args = {
+export const LabelWithIcon = Template.bind({});
+LabelWithIcon.args = {
     size: 'lg',
     content: 'Large Label',
     icon: 'home'
+};
+
+export const LabelWithIconSpin = Template.bind({});
+LabelWithIconSpin.args = {
+    size: 'lg',
+    content: 'Logind message here',
+    icon: 'spinner',
+    iconSpin: true
 };

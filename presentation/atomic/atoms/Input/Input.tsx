@@ -6,7 +6,7 @@ import './Input.scss';
 interface InputProps {
     value: string,
     setValue: React.Dispatch<React.SetStateAction<string>>,
-    state: string,
+    state: InputStatus,
     setState: React.Dispatch<React.SetStateAction<InputStatus>>,
     labelValue?: string
     size?: 'sm' | 'md' | 'lg';

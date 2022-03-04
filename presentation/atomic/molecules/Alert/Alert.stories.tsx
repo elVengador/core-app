@@ -35,7 +35,7 @@ Empty.args = {
 };
 
 export const CloseAlert = Template.bind({});
-CloseAlert.args = { ...Empty.args, value: 'This alert will detroy in 2s' };
+CloseAlert.args = { ...Empty.args, value: 'This alert will detroy in 2s', type: 'ERROR' };
 CloseAlert.play = async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     setTimeout(async () => {

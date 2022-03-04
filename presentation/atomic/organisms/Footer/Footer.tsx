@@ -7,7 +7,7 @@ interface FooterProps {
     elementOptions?: JSX.Element;
 }
 
-export const Footer2 = ({
+export const Footer = ({
     elementOptions = <Title content={`by elVengador - ${new Date().getFullYear()}`} ></Title>
     // ...props
 }: FooterProps): JSX.Element => {

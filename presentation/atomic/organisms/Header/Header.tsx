@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 
 import './Header.scss';
 import { Title } from '../../atoms/Title/Title';
-import { HEADER_TEXT } from '../../../../../app/presentation/configPage.util';
 import { IconButton } from '../../atoms/IconButton/IconButton';
 
 interface HeaderProps {
     title?: string;
+    leftElementOptions?: JSX.Element;
+    rightElementOptions?: JSX.Element;
 }
 
 export const Header = ({
-    title = HEADER_TEXT
+    title = "Palace",
+    ...props
 }: HeaderProps): JSX.Element => {
 
     const [theme, setTheme] = useState("light-theme");
@@ -36,14 +38,16 @@ export const Header = ({
     return (
         <header className="header">
             <div className="header--items">
-                <div></div>
-                <Title content={title} color="primary"></Title>
-                {/* <button onClick={() => toogleTheme()}>{theme}</button> */}
-                <IconButton
-                    icon={"adjust"}
-                    attributes={{ title: 'Change theme' }}
-                    events={{ onClick: () => toogleTheme() }}
-                />
+                <div>{props.leftElementOptions}</div>
+                <Title content={title} ></Title>
+                <div>
+                    {props.rightElementOptions}
+                    <IconButton
+                        icon={"adjust"}
+                        attributes={{ title: 'Change theme' }}
+                        events={{ onClick: () => toogleTheme() }}
+                    />
+                </div>
             </div>
         </header>
     );

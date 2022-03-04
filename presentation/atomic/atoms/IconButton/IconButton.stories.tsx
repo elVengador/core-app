@@ -14,6 +14,7 @@ const Template: ComponentStory<typeof IconButton> = (args) => <IconButton {...ar
 export const Default = Template.bind({});
 Default.args = {
     icon: "upload",
+    color: 'fg',
     attributes: { title: 'Upload File' }
 };
 

@@ -14,3 +14,9 @@ export const Default = Template.bind({});
 Default.args = {
     title: 'Titulo del Formulario'
 };
+
+export const LoadingForm = Template.bind({});
+LoadingForm.args = {
+    title: 'This form is waiting a operation',
+    loading: true
+};
