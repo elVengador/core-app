@@ -21,9 +21,11 @@ const setTokenLink = new ApolloLink((operation, forward) => {
 });
 
 const getNewTokens = async (retryNumber = 1) => {
+    console.log(' >> >> Get new Tokens')
     const refreshToken = storage.readSessionStorage({ key: 'refresh-token' })
     if (!refreshToken) { return null }
 
+    console.log(0)
     const res = await client.mutate<{ refreshToken: TokensOutput }, { refreshTokenInput: RefreshTokenInput }>({
         mutation: MUTATION_REFRESH_TOKEN,
         variables: {
@@ -33,10 +35,13 @@ const getNewTokens = async (retryNumber = 1) => {
             }
         }
     })
+    console.log(1)
 
     const value = res.data?.refreshToken
+    console.log(2)
     if (!value) { return { accessToken: null, refreshToken: null } }
     if (!value.accessToken || !value.refreshToken) { return { accessToken: null, refreshToken: null } }
+    console.log(3)
     return value
 }
 
@@ -45,17 +50,17 @@ const errorLink = onError(({ graphQLErrors, networkError, forward, operation }) 
     if (graphQLErrors) {
         const errorMessage = graphQLErrors[0]?.message
         if (!errorMessage) { console.log('no error'); }
-        if (errorMessage === 'MANY_TRYS') { console.log(' signOff + redirect'); }
+        if (errorMessage === 'Session Expired') { console.log(' Session Expired ....'); }
         if (errorMessage === 'Unauthorized') {
             try {
-                console.log('onErrorLink', operation.operationName);
+                console.log('onErrorLink', operation.operationName, errorMessage);
                 const oldHeaders = operation.getContext().headers;
                 const $promise = fromPromise(
                     new Promise(async (resolve) => {
                         try {
 
                             const res = await getNewTokens()
-                            // console.log('ok resolve', res);
+                            console.log('ok resolve', res);
                             if (!res) { throw new Error() }
                             if (!res.accessToken || !res.refreshToken) { throw new Error() }
                             storage.saveSessionStorage({ key: 'access-token', value: res.accessToken })

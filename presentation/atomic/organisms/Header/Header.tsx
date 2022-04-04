@@ -18,9 +18,9 @@ export const Header = ({
 
     const { theme, setTheme } = useTheme('root', 'light-theme')
 
-    const toogleTheme = () => {
-        if (theme === 'light-theme') setTheme('dark-theme')
-        if (theme === 'dark-theme') setTheme('light-theme')
+    const toggleTheme = () => {
+        const nextTheme = theme === 'light-theme' ? 'dark-theme' : 'light-theme'
+        setTheme(nextTheme)
     }
 
     return (
@@ -33,7 +33,7 @@ export const Header = ({
                     <IconButton
                         icon={"adjust"}
                         attributes={{ title: 'Change theme' }}
-                        events={{ onClick: () => toogleTheme() }}
+                        events={{ onClick: () => toggleTheme() }}
                     />
                 </div>
             </div>

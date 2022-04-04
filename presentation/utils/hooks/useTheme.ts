@@ -7,7 +7,6 @@ export const useTheme = (themeElementId: string, defaultTheme: string): {
     const [theme, setTheme] = useState(window.localStorage.getItem('theme') || defaultTheme);
     useEffect(() => {
         const setThemeOnPage = () => {
-            console.log('change theme');
             const rootElement = document.getElementById(themeElementId)
             if (!rootElement) { return }
 

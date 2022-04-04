@@ -5,14 +5,18 @@ import '../../../../../index.scss'
 
 
 interface PortalProps {
+    parentSelector: string,
+    id: string,
     children: JSX.Element
 }
 
-export const Portal = ({ children }: PortalProps): JSX.Element => {
-    const mount = document.getElementById("portal-root");
+export const Portal = ({ parentSelector, id, children }: PortalProps): JSX.Element => {
+    const mount = document.querySelector(parentSelector)
     const element = document.createElement("div");
+    element.id = id
 
     useEffect(() => {
+        console.log('>>>', mount);
         if (!mount) { return }
 
         mount.appendChild(element);
