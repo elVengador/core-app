@@ -28,13 +28,13 @@ export const Header = ({
             <div className="header--items">
                 <div>{props.leftElementOptions}</div>
                 <Title content={title} ></Title>
-                <div>
-                    {props.rightElementOptions}
+                <div className='right-options'>
                     <IconButton
                         icon={"adjust"}
                         attributes={{ title: 'Change theme' }}
                         events={{ onClick: () => toggleTheme() }}
                     />
+                    {props.rightElementOptions}
                 </div>
             </div>
         </header>
