@@ -11,7 +11,7 @@ const uri = `${PROTOCOL}://${API_HOST}:${API_PORT}/graphql`
 // const uri = `https://palace-api.jnicanor.me:443/graphql`
 const token = () => storage.readSessionStorage({ key: 'access-token' }) || ''
 
-const httpLink = new HttpLink({ uri });
+const httpLink = new HttpLink({ uri,fetchOptions:{mode: 'cors'} });
 
 const setTokenLink = new ApolloLink((operation, forward) => {
     // console.log(' -- > TOKEN LINK');
@@ -97,6 +97,6 @@ export const client = new ApolloClient({
         authorization: `Bearer ${token()}`,
         'client-name': 'WidgetX Ecom [web]',
         'client-version': '1.0.0'
-    }
+    },
 });
 
